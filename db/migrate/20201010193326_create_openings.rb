@@ -13,6 +13,7 @@ class CreateOpenings < ActiveRecord::Migration[6.0]
       t.string :job_description
       t.boolean :applied
       t.boolean :remind_me
+      t.boolean :interested
       t.timestamps
     end
   end

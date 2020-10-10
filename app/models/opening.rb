@@ -1,2 +1,3 @@
 class Opening < ApplicationRecord
+
 end

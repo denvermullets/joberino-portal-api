@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'linkedin', to: 'openings#linkedin', as: :opening_linkedin
+  
   resources :openings
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
