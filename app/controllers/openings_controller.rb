@@ -15,4 +15,19 @@ class OpeningsController < ApplicationController
     end
 
   end
+
+  def indeed
+    url = [
+      'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1', 
+      'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1&start=10', 
+      'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1&start=20']
+    response = Indeed.process(url)
+
+    if response[:status] == :completed && response[:error].nil?
+      all_jobs = Opening.all
+      render json: all_jobs
+    else
+      render json: response
+    end
+  end
 end
