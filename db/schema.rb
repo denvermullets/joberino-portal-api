@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_193326) do
     t.string "company_page"
     t.string "connection"
     t.string "job_description"
+    t.string "job_source"
     t.boolean "applied"
     t.boolean "remind_me"
     t.boolean "interested"
