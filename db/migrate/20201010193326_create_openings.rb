@@ -11,6 +11,7 @@ class CreateOpenings < ActiveRecord::Migration[6.0]
       t.string :company_page
       t.string :connection
       t.string :job_description
+      t.string :job_source
       t.boolean :applied
       t.boolean :remind_me
       t.boolean :interested
