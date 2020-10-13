@@ -14,7 +14,7 @@ class Indeed < Kimurai::Base
   def parse(response, url:, data: {})
     # Update response to current response after interaction with a browser
     doc = browser.current_response
-    browser.save_screenshot
+    # browser.save_screenshot
     sleep 2
     # sometimes a pop up will appear, refreshing page will avoid issues
     if browser.current_response.css('div.popover-foreground')
