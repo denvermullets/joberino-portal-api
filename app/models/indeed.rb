@@ -7,10 +7,6 @@ class Indeed < Kimurai::Base
     self.crawl!
   end
 
-  def scrape_page
-    
-  end 
-
   def parse(response, url:, data: {})
     # Update response to current response after interaction with a browser
     doc = browser.current_response
