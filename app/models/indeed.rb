@@ -12,6 +12,7 @@ class Indeed < Kimurai::Base
     doc = browser.current_response
     # browser.save_screenshot
     sleep 2
+    
     # sometimes a pop up will appear, refreshing page will avoid issues
     if browser.current_response.css('div.popover-foreground')
       browser.refresh 
@@ -23,6 +24,7 @@ class Indeed < Kimurai::Base
       puts "2nd pop up found"
       sleep 2
     end 
+
     while (doc.css('div.jobsearch-SerpJobCard')[0]) do
       # this loop goes thru the however many job listings are on the page
       doc = browser.current_response
@@ -33,7 +35,6 @@ class Indeed < Kimurai::Base
       job_url = single_job.css('a.jobtitle').attribute('href')
       job_role = single_job.css('a.jobtitle').text.strip().gsub(/\n/, "")
       job_company_name = single_job.css('span.company').text.strip().gsub(/\n/, "")
-      # single_job.css('span.location') ? job_location = single_job.css('span.location').text.strip().gsub(/\n/, "") : job_location = single_job.css('div.location').text.strip().gsub(/\n/, "")
       job_location = single_job.css('span.location') ? single_job.css('span.location').text.strip().gsub(/\n/, "") : single_job.css('div.location').text.strip().gsub(/\n/, "")
       job_salary = single_job.css('span.salaryText') ? single_job.css('span.salaryText').text.strip().gsub(/\n/, "") : ''
       job_description = single_job.css('div.summary ul li').text.strip().gsub(/\n/, "")
