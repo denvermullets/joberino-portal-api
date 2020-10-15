@@ -1,29 +1,25 @@
 class Linkedin < Kimurai::Base
-  @name = 'vehicles_spider'
+  @name = 'linkedinerino'
   @engine = :selenium_chrome
 
+  @@jobs = []
+
   def self.process(url)
-    @start_urls = [url]
+    @start_urls = url
     self.crawl!
   end
 
   def scrape_page
-    
-  end 
-
-  def parse(response, url:, data: {})
-    # scrape_page
     username = ENV['EMAIL']
     password = ENV['PASSWORD']
-    sleep 5
+    sleep 2
     # see if we're logged in or not
     begin
       browser.find(:css, 'a.nav__button-secondary').click
       sleep 1
       browser.fill_in 'session_key', with: username
-      sleep 1
       browser.fill_in 'session_password', with: password
-      sleep 3
+      sleep 2
       browser.find(:css, 'button.btn__primary--large').click
     rescue Capybara::ElementNotFound
       puts "user is logged in"
@@ -31,7 +27,7 @@ class Linkedin < Kimurai::Base
     
     # Update response to current response after interaction with a browser
     doc = browser.current_response
-    browser.save_screenshot
+    # browser.save_screenshot
     sleep 2
     
     while (doc.css('li.jobs-search-results__list-item')[0]) do
@@ -43,9 +39,11 @@ class Linkedin < Kimurai::Base
       single_job = job_listings.css('li.jobs-search-results__list-item')[0]
       # get job information
       job_url = single_job.css('a.job-card-list__title').attribute('href')
+      job_url = "https://linkedin.com" + job_url
       job_role = single_job.css('a.job-card-list__title').text.gsub(/\n/, "").strip().gsub(/\n/, "")
       job_company_name = single_job.css('a.job-card-container__company-name').text.strip().gsub(/\n/, "")
       job_company_url = single_job.css('a.job-card-container__company-name').attribute('href')
+      job_company_url = "https://linkedin.com" + job_company_url
       job_location = single_job.css('li.job-card-container__metadata-item').text.strip().gsub(/\n/, "")
       job_network = single_job.css('div.job-flavors__label').text.strip().gsub(/\n/, "")
       # we want to delete the LI so that the dom will render the next job (only shows 7 until scroll)
@@ -60,9 +58,8 @@ class Linkedin < Kimurai::Base
       puts job_url
       puts " ===== "
       browser.save_screenshot
-      sleep 5
-      job = {company: job_company_name, role: job_role, location: job_location, network: job_network, company_url: job_company_url, posting: job_url}
-      Opening.create(
+      # sleep 5
+      job = {
         company_name: job_company_name,
         job_title: job_role,
         location: job_location,
@@ -73,8 +70,16 @@ class Linkedin < Kimurai::Base
         remind_me: false,
         interested: true,
         job_source: "LinkedIn",
-      )
+      }
+      @@jobs << job
     end
+  end 
+
+  def parse(response, url:, data: {})
+    scrape_page
+    
+    @@jobs.reverse().map{ |job| Opening.create(job) }
+
   end
     
 end
