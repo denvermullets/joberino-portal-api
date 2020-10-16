@@ -59,7 +59,7 @@ class Linkedin < Kimurai::Base
       puts job_company_url
       puts job_url
       puts " ===== "
-      browser.save_screenshot
+      # browser.save_screenshot
       # sleep 5
       job = {
         company_name: job_company_name,
