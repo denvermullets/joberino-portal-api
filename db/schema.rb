@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_10_10_193326) do
     t.string "job_title"
     t.string "salary_info"
     t.string "location"
+    t.string "job_id"
+    t.string "extra_info"
     t.string "company_page"
     t.string "connection"
     t.string "job_description"

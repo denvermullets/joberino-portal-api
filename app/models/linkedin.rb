@@ -39,13 +39,11 @@ class Linkedin < Kimurai::Base
       single_job = job_listings.css('li.jobs-search-results__list-item')[0]
       # get job information
       job_url = single_job.css('a.job-card-list__title').attribute('href')
-      job_url = "https://linkedin.com" + job_url
+      # job_url = "https://linkedin.com" + job_url
       job_role = single_job.css('a.job-card-list__title').text.gsub(/\n/, "").strip().gsub(/\n/, "")
       
       job_company_name = single_job.css('a.job-card-container__company-name').text.strip().gsub(/\n/, "")
       job_company_url = single_job.css('a.job-card-container__company-name').attribute('href')
-      job_company_url ? "https://linkedin.com" + job_company_url : 'n/a'
-      # job_company_url = "https://linkedin.com" + job_company_url
       
       job_location = single_job.css('li.job-card-container__metadata-item').text.strip().gsub(/\n/, "")
       job_network = single_job.css('div.job-flavors__label').text.strip().gsub(/\n/, "")
@@ -73,7 +71,7 @@ class Linkedin < Kimurai::Base
         applied: false,
         remind_me: false,
         interested: true,
-        job_source: "LinkedIn",
+        job_source: "https://linkedin.com",
       }
       @@jobs << job
     end

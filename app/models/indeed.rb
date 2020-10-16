@@ -94,7 +94,7 @@ class Indeed < Kimurai::Base
         salary_info: job_salary,
         job_description: job_description,
         job_url: job_url,
-        job_source: 'Indeed',
+        job_source: 'https://indeed.com',
         applied: false,
         remind_me: false,
         interested: true,  

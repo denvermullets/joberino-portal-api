@@ -1,6 +1,5 @@
 class OpeningsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  # validates_uniqueness_of :
 
   def index
     all_jobs = Opening.where(interested: true).reverse()
