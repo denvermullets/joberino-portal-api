@@ -1,7 +1,21 @@
 class OpeningsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
-    all_jobs = Opening.all.reverse()
+    all_jobs = Opening.where(interested: true).reverse()
     render json: all_jobs
+  end
+
+  def show
+    job = Opening.find(params[:id])
+    render json: job
+  end
+
+  def update
+    job = Opening.find(params[:id])
+    job.update(update_interested)
+    jobs = Opening.all.reverse()
+    render json: jobs
   end
 
   def linkedin
@@ -14,7 +28,7 @@ class OpeningsController < ApplicationController
     response = Linkedin.process(url)
 
     if response[:status] == :completed && response[:error].nil?
-      all_jobs = Opening.all.reverse()
+      all_jobs = Opening.where(interested: true).reverse()
       render json: all_jobs
     else
       render json: response
@@ -31,10 +45,15 @@ class OpeningsController < ApplicationController
     response = Indeed.process(url)
 
     if response[:status] == :completed && response[:error].nil?
-      all_jobs = Opening.all.reverse()
+      all_jobs = Opening.where(interested: true).reverse()
       render json: all_jobs
     else
       render json: response
     end
+  end
+
+  private
+  def update_interested
+    params.require(:opening).permit(:interested, :applied, :remind_me)
   end
 end
