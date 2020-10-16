@@ -41,14 +41,18 @@ class Linkedin < Kimurai::Base
       job_url = single_job.css('a.job-card-list__title').attribute('href')
       job_url = "https://linkedin.com" + job_url
       job_role = single_job.css('a.job-card-list__title').text.gsub(/\n/, "").strip().gsub(/\n/, "")
+      
       job_company_name = single_job.css('a.job-card-container__company-name').text.strip().gsub(/\n/, "")
       job_company_url = single_job.css('a.job-card-container__company-name').attribute('href')
-      job_company_url = "https://linkedin.com" + job_company_url
+      job_company_url ? "https://linkedin.com" + job_company_url : 'n/a'
+      # job_company_url = "https://linkedin.com" + job_company_url
+      
       job_location = single_job.css('li.job-card-container__metadata-item').text.strip().gsub(/\n/, "")
       job_network = single_job.css('div.job-flavors__label').text.strip().gsub(/\n/, "")
       # we want to delete the LI so that the dom will render the next job (only shows 7 until scroll)
       job_listings.css('li.jobs-search-results__list-item')[0].remove
-      browser.execute_script("document.querySelector('li.jobs-search-results__list-item').remove()") ; sleep 2
+      browser.execute_script("document.querySelector('li.jobs-search-results__list-item').remove()") # ; sleep 2
+      sleep 0.3
       puts ' ===== '
       puts job_company_name
       puts job_role

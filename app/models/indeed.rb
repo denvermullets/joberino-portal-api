@@ -103,7 +103,8 @@ class Indeed < Kimurai::Base
       
       # we want to delete the LI so that the dom will render the next job (only shows 7 until scroll)
       doc.css('div.jobsearch-SerpJobCard')[0].remove
-      browser.execute_script("document.querySelector('div.jobsearch-SerpJobCard').remove()") ; sleep 2
+      browser.execute_script("document.querySelector('div.jobsearch-SerpJobCard').remove()") # ; sleep 2
+      sleep 0.3
     end
   end
 
