@@ -2,7 +2,7 @@ class OpeningsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    all_jobs = Opening.where(interested: true).reverse()
+    all_jobs = Opening.where(interested: true)
     render json: all_jobs
   end
 
@@ -22,21 +22,26 @@ class OpeningsController < ApplicationController
       'https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=full%20stack&location=New%20York%20City%20Metropolitan%20Area', 
       "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=full%20stack&location=New%20York%20City%20Metropolitan%20Area&start=25", 
       "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=full%20stack&location=New%20York%20City%20Metropolitan%20Area&start=50",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area&start=25",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area&start=50",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area&start=75",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area&start=100",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area&start=125",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area&start=150",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area&start=175",
-      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=software%20engineer&location=New%20York%20City%20Metropolitan%20Area&start=200",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area&start=25",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area&start=50",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area&start=75",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area&start=100",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area&start=125",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area&start=150",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area&start=175",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=engineer&location=New%20York%20City%20Metropolitan%20Area&start=200",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=front%20end&location=New%20York%20City%20Metropolitan%20Area",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=front%20end&location=New%20York%20City%20Metropolitan%20Area&start=25",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=front%20end&location=New%20York%20City%20Metropolitan%20Area&start=50",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=front%20end&location=New%20York%20City%20Metropolitan%20Area&start=75",
+      "https://www.linkedin.com/jobs/search/?f_TPR=r86400&geoId=90000070&keywords=front%20end&location=New%20York%20City%20Metropolitan%20Area&start=100",
     ]
 
     response = Linkedin.process(url)
 
     if response[:status] == :completed && response[:error].nil?
-      all_jobs = Opening.where(interested: true).reverse()
+      all_jobs = Opening.where(interested: true)
       render json: all_jobs
     else
       render json: response
@@ -53,7 +58,7 @@ class OpeningsController < ApplicationController
     response = Indeed.process(url)
 
     if response[:status] == :completed && response[:error].nil?
-      all_jobs = Opening.where(interested: true).reverse()
+      all_jobs = Opening.where(interested: true)
       render json: all_jobs
     else
       render json: response

@@ -50,7 +50,7 @@ class Linkedin < Kimurai::Base
       # we want to delete the LI so that the dom will render the next job (only shows 7 until scroll)
       job_listings.css('li.jobs-search-results__list-item')[0].remove
       browser.execute_script("document.querySelector('li.jobs-search-results__list-item').remove()") # ; sleep 2
-      sleep 0.3
+      sleep 0.1
       puts ' ===== '
       puts job_company_name
       puts job_role
@@ -80,7 +80,7 @@ class Linkedin < Kimurai::Base
   def parse(response, url:, data: {})
     scrape_page
     
-    @@jobs.reverse().map{ |job| Opening.create(job) }
+    @@jobs.map{ |job| Opening.create(job) }
 
   end
     

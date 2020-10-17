@@ -73,7 +73,6 @@ class Indeed < Kimurai::Base
       # get job information
       
       job_url = single_job.css('a.jobtitle').attribute('href')
-      job_url = 'https://indeed.com' + job_url
       job_role = single_job.css('a.jobtitle').text.strip().gsub(/\n/, "")
       job_company_name = single_job.css('span.company').text.strip().gsub(/\n/, "")
       job_location = single_job.css('span.location') ? single_job.css('span.location').text.strip().gsub(/\n/, "") : single_job.css('div.location').text.strip().gsub(/\n/, "")
@@ -111,7 +110,7 @@ class Indeed < Kimurai::Base
   def parse(response, url:, data: {})
     scrape_page
 
-    @@jobs.reverse().map{ |job| Opening.create(job) }
+    @@jobs.map{ |job| Opening.create(job) }
 
   end
     
