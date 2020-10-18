@@ -94,6 +94,7 @@ class Indeed < Kimurai::Base
         job_description: job_description,
         job_url: job_url,
         job_source: 'https://indeed.com',
+        job_id: "indeed",
         applied: false,
         remind_me: false,
         interested: true,  

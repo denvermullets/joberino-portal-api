@@ -67,6 +67,7 @@ class Linkedin < Kimurai::Base
         location: job_location,
         connection: job_network,
         company_page: job_company_url,
+        job_id: 'linkedin',
         job_url: job_url,
         applied: false,
         remind_me: false,
