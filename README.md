@@ -12,6 +12,8 @@ You will need to supply your LinkedIn email and password (stored in a .env file 
 
 Feel free to make PR's. As long as I'm still looking for a job, I'll be working on this.
 
+### [LINK TO FRONTEND REPO](https://github.com/denvermullets/joberino-portal-frontend)
+
 ### Some notes on sources:
 
 - Built in NYC is the quickest to scrape
