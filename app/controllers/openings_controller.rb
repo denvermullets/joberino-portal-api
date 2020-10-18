@@ -2,7 +2,7 @@ class OpeningsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    all_jobs = Opening.where(interested: true)
+    all_jobs = Opening.where(interested: true).reverse()
     render json: all_jobs
   end
 
@@ -54,8 +54,40 @@ class OpeningsController < ApplicationController
       'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1', 
       'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1&start=10', 
       'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1&start=20',
+      'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1&start=30',
+      'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1&start=40',
+      'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1&start=50',
+      'https://www.indeed.com/jobs?q=full%20stack%20developer&l=New%20York%2C%20NY&fromage=1&start=60',
     ]
     response = Indeed.process(url)
+
+    if response[:status] == :completed && response[:error].nil?
+      all_jobs = Opening.where(interested: true)
+      render json: all_jobs
+    else
+      render json: response
+    end
+  end
+
+  def nycstartup
+    url = [
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=1',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=2',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=3',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=4',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=5',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=6',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=7',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=8',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=9',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=10',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=11',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=12',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=13',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=14',
+      'https://www.builtinnyc.com/jobs/new-york-city/dev-engineering?page=15',
+    ]
+    response = Nycstartup.process(url)
 
     if response[:status] == :completed && response[:error].nil?
       all_jobs = Opening.where(interested: true)
