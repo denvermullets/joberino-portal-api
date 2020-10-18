@@ -6,7 +6,11 @@
 
 Joberino pulls listings in the last 24hrs and adds them to a Postgresql database and avoids duplicates based on company and job title. So no 2 'IBM - Software Engineer' roles. The idea is that it makes it easier to keep track of the 'new' job postings without having to see all the senior jobs and stuff you have viewed already.
 
-Currently you can save a listing, mark it as applied, or ignore the job posting. As of right now there's no filtering based on saved or applied jobs, but that should be implemented soon~ish.
+Currently you can save a listing, mark it as applied, or ignore the job posting. As of right now there's no filtering based on saved or applied jobs, but that should be implemented soon~ish. You can view jobs while it's scraping, it won't disrupt it.
+
+You will need to supply your LinkedIn email and password (stored in a .env file in the root directory). Usage is below in the Installation section.
+
+The only thing I've noticed is that sometimes LinkedIn will log you out 'cause it's trying to figure out if you're a bot or not.
 
 Feel free to make PR's
 
@@ -17,11 +21,13 @@ Feel free to make PR's
 - Indeed is largely useless as it rarely has jobs that aren't already on LinkedIn or other sites.
   - They also have agressive popups and there's a 3rd popup I never got to see the HTML for. Scraping could fail and you'll need to refresh the page and que Indeed again.
 
+If you want to add more search terms or url on the 3 sources, add them to the arrays in `openings_controller.rb` since each url contains the search terms and the page it's on.
+
 ## Installation
 
 This is built using ``Ruby 2.7.1`` and ``Rails 6.0.3.4``. Please make sure you're using at least those versions of Ruby / Rails.
 
-Joberino uses Kimurai gem, which uses Selenium, Nokogiri, and Capybara. Bundle install should take care of you but if not here's the commands you can use.
+Joberino uses Kimurai gem, which uses Selenium, Nokogiri, and Capybara. Bundle install should take care of you but if not here's the commands you can use. It also uses Dotenv so manage your LinkedIn 
 
 ```
 brew cask install google-chrome firefox
@@ -34,7 +40,14 @@ gem install 'nokogiri'
 
 I've heard from people that the `google-chrome` gives an error on install, but I think that's 'cause you already have Chrome installed. Selenium runs a headless (invisible) Chrome browser to do the scraping.
 
-Clone repo down and `bundle install`
+Create a `.env` file in the root directory and inside of it put your email and pw for LinkedIn. This is just stored locally.
+
+```
+EMAIL=your@email.com
+PASSWORD=yourPas$word
+```
+
+Once you `bundle install` fire it up.
 
 ```
 rails db:create
