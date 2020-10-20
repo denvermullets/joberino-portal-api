@@ -28,7 +28,7 @@ If you want to add more search terms or url on the 3 sources, add them to the ar
 
 This is built using ``Ruby 2.7.1`` and ``Rails 6.0.3.4``. Please make sure you're using at least those versions of Ruby / Rails.
 
-Joberino uses Kimurai gem, which uses Selenium, Nokogiri, and Capybara. Bundle install should take care of you but if not here's the commands you can use. It also uses Dotenv so manage your LinkedIn 
+Joberino uses Kimurai gem, which uses Selenium, Nokogiri, and Capybara. Bundle install should take care of you but if not here's the commands you can use. It also uses Dotenv to manage your LinkedIn info.
 
 ```
 brew cask install google-chrome firefox
