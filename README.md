@@ -20,6 +20,7 @@ Feel free to make PR's. As long as I'm still looking for a job, I'll be working 
   - You trade having connection info w/having a brief job description.
 - LinkedIn takes about 5mins to scrape to avoid being logged out or marked as a bot. Especially since you're using your own login information.
   - I've noticed sometimes LinkedIn will log you out in your browser while it's scraping 'cause it's trying to figure out if you're a bot or not. Just log back in and you should be fine.
+  - I'd also imagine this breaks ToS for LinkedIn, however we're not publicly sharing this info or doing anything other than personal tracking. 
 - Indeed is largely useless as it rarely has jobs that aren't already on LinkedIn or other sites.
   - They also have agressive popups and there's a 3rd popup I never got to see the HTML for. Scraping could fail and you'll need to refresh the page and que Indeed again.
 
