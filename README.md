@@ -16,7 +16,8 @@ Feel free to make PR's. As long as I'm still looking for a job, I'll be working 
 
 ### Some notes on sources:
 
-- Built in NYC is the quickest to scrape
+- Built in NYC is the quickest to scrape and has a good chunk of the jobs on LinkedIn.
+  - You trade having connection info w/having a brief job description.
 - LinkedIn takes about 5mins to scrape to avoid being logged out or marked as a bot. Especially since you're using your own login information.
   - I've noticed sometimes LinkedIn will log you out in your browser while it's scraping 'cause it's trying to figure out if you're a bot or not. Just log back in and you should be fine.
 - Indeed is largely useless as it rarely has jobs that aren't already on LinkedIn or other sites.
