@@ -43,7 +43,7 @@ gem install nokogiri
 
 I've heard from people that the `google-chrome` gives an error on install, but I think that's 'cause you already have Chrome installed. Selenium runs a headless (invisible) Chrome browser to do the scraping.
 
-If you encounter this error -
+If you encounter this error:
 
 ```
 Couldn't create 'joberino_portal_api_development' database.
