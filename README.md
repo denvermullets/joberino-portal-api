@@ -54,6 +54,8 @@ PG::ConnectionBad: could not connect to server: No such file or directory
 
 Try running `brew postgresql-upgrade-database` and that should fix the error.
 
+If you're running on a mac and encounter a permissions error with chromedrive, possible solutions can be found here: https://stackoverflow.com/questions/60362018/macos-catalinav-10-15-3-error-chromedriver-cannot-be-opened-because-the-de
+
 Create a `.env` file in the root directory and inside of it put your email and pw for LinkedIn. This is just stored locally.
 
 ```
