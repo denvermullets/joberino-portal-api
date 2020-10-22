@@ -38,7 +38,7 @@ brew cask install chromedriver
 brew install geckodriver
 brew install phantomjs
 gem install kimurai
-gem install 'nokogiri'
+gem install nokogiri
 ```
 
 I've heard from people that the `google-chrome` gives an error on install, but I think that's 'cause you already have Chrome installed. Selenium runs a headless (invisible) Chrome browser to do the scraping.
