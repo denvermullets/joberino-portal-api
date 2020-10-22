@@ -52,7 +52,7 @@ rails aborted!
 PG::ConnectionBad: could not connect to server: No such file or directory
 ```
 
-Try running `brew postgresql-upgrade-database' and that should fix the error.
+Try running `brew postgresql-upgrade-database` and that should fix the error.
 
 Create a `.env` file in the root directory and inside of it put your email and pw for LinkedIn. This is just stored locally.
 
