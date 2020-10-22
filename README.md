@@ -43,6 +43,17 @@ gem install nokogiri
 
 I've heard from people that the `google-chrome` gives an error on install, but I think that's 'cause you already have Chrome installed. Selenium runs a headless (invisible) Chrome browser to do the scraping.
 
+If you encounter this error:
+
+```
+Couldn't create 'joberino_portal_api_development' database.
+Please check your configuration.
+rails aborted!
+PG::ConnectionBad: could not connect to server: No such file or directory
+```
+
+Try running `brew postgresql-upgrade-database' and that should fix the error.
+
 Create a `.env` file in the root directory and inside of it put your email and pw for LinkedIn. This is just stored locally.
 
 ```
