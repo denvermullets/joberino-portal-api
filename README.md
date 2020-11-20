@@ -41,7 +41,9 @@ gem install kimurai
 gem install nokogiri
 ```
 
-I've heard from people that the `google-chrome` gives an error on install, but I think that's 'cause you already have Chrome installed. Selenium runs a headless (invisible) Chrome browser to do the scraping.
+I've heard from people that the `google-chrome` gives an error on install, but I think that's 'cause you already have Chrome installed or it's an issue with Homebrew, I'm not sure which. Selenium runs a headless (invisible) Chrome browser to do the scraping.
+
+Speaking of Chrome issues, if your Chrome browser becomes out of date with your chromedriver the api just won't run and cites an out of date version. You just need to update it with `brew cask upgrade`
 
 If you encounter this error:
 
