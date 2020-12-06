@@ -42,11 +42,8 @@ class OpeningsController < ApplicationController
 
     if response[:status] == :completed && response[:error].nil?
       all_jobs = Opening.where(interested: true)
-      puts '**** LinkedIn complete ****'
-      puts '**** LinkedIn complete ****'
-      puts '**** LinkedIn complete ****'
-      puts '**** LinkedIn complete ****'
-      puts '**** LinkedIn complete ****'
+      5.times { puts '**** LinkedIn complete ****' }
+    
       render json: all_jobs
     else
       render json: response
@@ -96,11 +93,8 @@ class OpeningsController < ApplicationController
 
     if response[:status] == :completed && response[:error].nil?
       all_jobs = Opening.where(interested: true)
-      puts '**** BuiltinNYC complete ****'
-      puts '**** BuiltinNYC complete ****'
-      puts '**** BuiltinNYC complete ****'
-      puts '**** BuiltinNYC complete ****'
-      puts '**** BuiltinNYC complete ****'
+      5.times { puts '**** BuiltinNYC complete ****' }
+
       render json: all_jobs
     else
       render json: response
